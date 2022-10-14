@@ -1,4 +1,7 @@
-<?xml version="1.0"?> <robot xmlns:xacro="http://ros.org/wiki/xacro" name="open3d_demo" > <xacro:arg name="use_nominal_extrinsics" default="false"/>
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="open3d_demo" >
+
+  <xacro:arg name="use_nominal_extrinsics" default="false"/>
   <xacro:arg name="add_plug" default="false" />
   <xacro:arg name="use_mesh" default="true" />
   
@@ -10,40 +13,24 @@
   <xacro:ur3_robot prefix=""/> 
 
   <!-- camera -->
-  <xacro:sensor_d435 parent="realsense_visual" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)" use_mesh="$(arg use_mesh)">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+  <xacro:sensor_d435 parent="tool0" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)" use_mesh="$(arg use_mesh)">
+    <origin xyz="-0.1016 0 0.01" rpy="0 ${radians(-90)} 0"/>
   </xacro:sensor_d435> 
-
-  <link name="realsense_visual">
-    <visual>
-      <geometry>
-        <box size="0.1516 0.07 0.005" />
-      </geometry>
-      <material name="gray">
-        <color rgba="0.5 0.5 0.5 1.0"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="tool_to_aluminum" type="fixed">
-    <parent link="tool0"/>
-    <child link="realsense_visual"/>
-    <origin xyz="-0.04 0.0 0.0" rpy="0 0 0"/>
-  </joint>
   
   <link name="world" />
 
   <link name="table">
     <visual>
       <geometry>
-        <box size="2 1 1" />
+        <box size="1 1 1" />
       </geometry>
-      <material name="swri_blue">
-        <color rgba="0.0 0.0 0.7 1.0"/>
+      <material name="Orange">
+        <color rgba="1.0 0.4 0.0 1.0"/>
       </material>
     </visual>
     <collision>
       <geometry>
-        <box size="2 1 1" />
+        <box size="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -57,55 +44,55 @@
   <joint name="table_to_base_link_joint" type="fixed">
     <parent link="table" />
     <child link = "base_link" />
-    <origin xyz="0.6 0.0 0.5" rpy="0.0 0.0 0.0" />
+    <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0" />
   </joint>
   
   <!-- realsense calibration stuff -->
-  <link name="camera_color_optical_frame_x_trans"/>
-  <link name="camera_color_optical_frame_y_trans"/>
-  <link name="camera_color_optical_frame_z_trans"/>
-  <link name="camera_color_optical_frame_pitch"/>
-  <link name="camera_color_optical_frame_yaw"/>
-  <link name="camera_color_optical_frame"/>
-  <joint name="camera_color_optical_frame_x_joint" type="prismatic">
+  <link name="realsense_x_trans"/>
+  <link name="realsense_y_trans"/>
+  <link name="realsense_z_trans"/>
+  <link name="realsense_pitch"/>
+  <link name="realsense_yaw"/>
+  <link name="realsense_optical_frame"/>
+  <joint name="realsense_x_joint" type="prismatic">
     <parent link="tool0"/>
-    <child link="camera_color_optical_frame_x_trans"/>
+    <child link="realsense_x_trans"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis rpy="0 0 0" xyz="1 0 0"/>
     <limit effort="30" lower="-1.0" upper="1.0" velocity="0.0508"/>
   </joint>
-  <joint name="camera_color_optical_frame_y_joint" type="prismatic">
-    <parent link="camera_color_optical_frame_x_trans"/>
-    <child link="camera_color_optical_frame_y_trans"/>
+  <joint name="realsense_y_joint" type="prismatic">
+    <parent link="realsense_x_trans"/>
+    <child link="realsense_y_trans"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="30" lower="-1.0" upper="1.0" velocity="0.0508"/>
   </joint>
-  <joint name="camera_color_optical_frame_z_joint" type="prismatic">
-    <parent link="camera_color_optical_frame_y_trans"/>
-    <child link="camera_color_optical_frame_z_trans"/>
+  <joint name="realsense_z_joint" type="prismatic">
+    <parent link="realsense_y_trans"/>
+    <child link="realsense_z_trans"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="30" lower="-1.0" upper="1.0" velocity="0.0508"/>
   </joint>
-  <joint name="camera_color_optical_frame_yaw_joint" type="revolute">
-    <parent link="camera_color_optical_frame_z_trans"/>
-    <child link="camera_color_optical_frame_yaw"/>
+  <joint name="realsense_yaw_joint" type="revolute">
+    <parent link="realsense_z_trans"/>
+    <child link="realsense_yaw"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="0 0 1"/>
   </joint>
-  <joint name="camera_color_optical_frame_pitch_joint" type="revolute">
-    <parent link="camera_color_optical_frame_yaw"/>
-    <child link="camera_color_optical_frame_pitch"/>
+  <joint name="realsense_pitch_joint" type="revolute">
+    <parent link="realsense_yaw"/>
+    <child link="realsense_pitch"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="0 1 0"/>
   </joint>
-  <joint name="camera_color_optical_frame_roll_joint" type="revolute">
-    <parent link="camera_color_optical_frame_pitch"/>
-    <child link="camera_color_optical_frame"/>
-    <origin rpy="0.016 -0.008 -1.565" xyz="-0.082 0.0078 0.0175"/>
+  <joint name="realsense_roll_joint" type="revolute">
+    <parent link="realsense_pitch"/>
+    <child link="realsense_optical_frame"/>
+    <origin rpy="0.0028 0.0005 -0.0015" xyz="-0.0157 0.0098 0.0091"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="1 0 0"/>
   </joint>
@@ -165,13 +152,6 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="1 0 0"/>
-  </joint>
-  
-  <link name="target_calibrated"/>
-  <joint name="target_calibrated_joint" type="fixed">
-    <parent link="world"/>
-    <child link="target_calibrated"/>
-    <origin rpy="-1.5712 0.0098 0.0073" xyz="0.5242 0.2895 0.5130"/>
   </joint>
 
 </robot>

@@ -2,13 +2,13 @@
 
 static_targets:
 -
-     target_name: modified_circle_7x5
+     target_name: modified_circle_4x3
      target_type: 2
-     circle_dia:  0.045
-     spacing:  0.06
+     circle_dia:  0.0254
+     spacing:  0.03556
      target_frame: target
      transform_interface: ros_scti
      parent_frame: world
-     target_rows: 7
-     target_cols: 5
+     target_rows: 4
+     target_cols: 3
 
