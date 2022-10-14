@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Exec=/home/open3d_demo/open3d_demo_ws/src/open3d_demo/bash/view_mesh.bash
+Name=View Mesh
+GenericName=View Mesh
+Comment=View Mesh
+Encoding=UTF-8
+Terminal=false
+Type=Application
+Categories=Application;Network;
