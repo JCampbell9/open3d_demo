@@ -3,11 +3,17 @@
   <xacro:arg name="use_mesh" default="true" />
   
   <!-- ur3 -->
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur3_macro.xacro" />
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro" />
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" /> 
 
-  <!-- arm -->
-  <xacro:ur3_robot prefix=""/> 
+  <!-- ROBOTS -->
+  <!--iiwa-->
+  <xacro:arg name="iiwa_hardware_interface" default="PositionJointInterface"/>
+  <xacro:iiwa7 hardware_interface="$(arg iiwa_hardware_interface)"
+               robot_name="iiwa"
+               parent="table">
+  <origin xyz="0.214 -0.324 0.50" rpy="0 0 1.63"/>
+  </xacro:iiwa7>
 
   <!-- camera -->
   <xacro:sensor_d435 parent="realsense_visual" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)" use_mesh="$(arg use_mesh)">
@@ -25,7 +31,7 @@
     </visual>
   </link>
   <joint name="tool_to_aluminum" type="fixed">
-    <parent link="tool0"/>
+    <parent link="iiwa_link_ee"/>
     <child link="realsense_visual"/>
     <origin xyz="-0.04 0.0 0.0" rpy="0 0 0"/>
   </joint>
@@ -54,11 +60,11 @@
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </joint>
 
-  <joint name="table_to_base_link_joint" type="fixed">
+  <!-- <joint name="table_to_base_link_joint" type="fixed">
     <parent link="table" />
     <child link = "base_link" />
     <origin xyz="0.6 0.0 0.5" rpy="0.0 0.0 0.0" />
-  </joint>
+  </joint> -->
   
   <!-- realsense calibration stuff -->
   <link name="camera_color_optical_frame_x_trans"/>
@@ -68,7 +74,7 @@
   <link name="camera_color_optical_frame_yaw"/>
   <link name="camera_color_optical_frame"/>
   <joint name="camera_color_optical_frame_x_joint" type="prismatic">
-    <parent link="tool0"/>
+    <parent link="iiwa_link_ee"/>
     <child link="camera_color_optical_frame_x_trans"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis rpy="0 0 0" xyz="1 0 0"/>

@@ -5,7 +5,7 @@
   <arg name="joint_state_gui" default="true"/>
   <arg name="sim_robot" default="true"/>
   <arg name="rviz" default="true"/>
-  <arg name="robot_ip" default="192.168.56.11"/>
+  <arg name="robot_ip" default="172.31.1.147"/>
     
   <param name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find open3d_demo)/urdf/demo.xacro'" />
   
