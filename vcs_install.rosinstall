@@ -3,6 +3,18 @@ repositories:
     type: git
     url: https://github.com/marrts/Universal_Robots_ROS_Driver.git
     version: d081300969d94b0dd6b3b34b4e9bd91e8bfc47f2
+  iiwa_pubsub_practice:
+    type: git
+    url: https://github.com/adalysa/iiwa_pubsub_practice.git
+    version: d113252a8421bdc7a6dfc09e929baf7628474d60
+  iiwa_stack:
+    type: git
+    url: https://github.com/IFL-CAMP/iiwa_stack.git
+    version: a4f132ad093d276e63040ddbbac6b2cd1facbdcc
+  iiwa_stack_examples:
+    type: git
+    url: https://github.com/tassos/iiwa_stack_examples.git
+    version: a7bd7a3fa5444079fd1a496e79ae1bc925256921
   industrial_calibration:
     type: git
     url: https://github.com/ros-industrial/industrial_calibration.git
@@ -17,8 +29,8 @@ repositories:
     version: c3e2ad2c8504cfd428732feb20c3abe64127dff9
   open3d_demo:
     type: git
-    url: https://github.com/marrts/open3d_demo.git
-    version: f8ebd5589f16a9f731f83ab6200f72bc124fb474
+    url: https://github.com/Debido07/open3d_demo.git
+    version: cb605649062b8f47f7531f5eef6e9c0db2bc3c97
   open3d_interface:
     type: git
     url: git@github.com:marrts/open3d_interface.git
@@ -35,4 +47,3 @@ repositories:
     type: git
     url: git@github.com:ros-industrial/ur_msgs.git
     version: 8455fa579497599a22e41388618d70aa62995693
-
