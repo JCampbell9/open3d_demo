@@ -1,8 +1,4 @@
 repositories:
-  Universal_Robots_ROS_Driver:
-    type: git
-    url: https://github.com/marrts/Universal_Robots_ROS_Driver.git
-    version: d081300969d94b0dd6b3b34b4e9bd91e8bfc47f2
   iiwa_pubsub_practice:
     type: git
     url: https://github.com/adalysa/iiwa_pubsub_practice.git
@@ -39,11 +35,4 @@ repositories:
     type: git
     url: https://github.com/rjwb1/realsense-ros.git
     version: bbe22d7d51937120453c9fded272de97105b30ad
-  universal_robot:
-    type: git
-    url: https://github.com/marrts/universal_robot.git
-    version: 1d017afe5004fcc15465f5d9e8518fcd27963b15
-  ur_msgs:
-    type: git
-    url: git@github.com:ros-industrial/ur_msgs.git
-    version: 8455fa579497599a22e41388618d70aa62995693
+
