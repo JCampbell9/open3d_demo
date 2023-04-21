@@ -20,8 +20,7 @@
   <group unless="$(arg sim_robot)">    
     <group>
       <remap from="joint_states" to="robot_joint_states" />
-      <include file="$(find ur_robot_driver)/launch/ur3_bringup.launch">
-        <arg name="robot_ip" value="$(arg robot_ip)"/>
+      <include file="$(find iiwa_hw)/launch/iiwa_hw.launch">
       </include>
     </group>
     <include file="$(find realsense2_camera)/launch/rs_camera.launch">
@@ -36,7 +35,7 @@
       <arg name="camera_info_topic" value="/camera/color/camera_info"/>
     </include>
     
-    <arg name="wcal" default="true"/> <!-- WARNING, only one of these two may be true at a time -->
+    <arg name="wcal" default="false"/> <!-- WARNING, only one of these two may be true at a time -->
     <arg name="ical" default="false"/> <!-- WARNING, only one of these two may be true at a time -->
   
     <!-- publish mutable_joint_states topic to facilitate calibration-->
@@ -61,6 +60,7 @@
     </node>
     
     <node name="combined_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+      <remap from="/robot_joint_states" to="/iiwa/joint_states" />
       <rosparam param="source_list">[robot_joint_states, mutable_joint_states]</rosparam>
       <param name="publish_default_velocities" value="true" />
       <param name="publish_default_efforts" value="true" />
@@ -69,6 +69,11 @@
     
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
+    <node name="iiwa_translate" pkg="iiwa_pubsub" type="iiwa_sub_node"/>
+    
+    <node name="move_iiwa" pkg="iiwa_tool_examples" type="command_robot">
+      <param name="use_cartesian_command" value="false" />
+    </node>
 
   </group>
   

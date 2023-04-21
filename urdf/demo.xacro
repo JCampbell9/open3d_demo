@@ -1,23 +1,31 @@
 <?xml version="1.0"?> <robot xmlns:xacro="http://ros.org/wiki/xacro" name="open3d_demo" > <xacro:arg name="use_nominal_extrinsics" default="false"/>
   <xacro:arg name="add_plug" default="false" />
   <xacro:arg name="use_mesh" default="true" />
-  
-  <!-- ur3 -->
+
+  <material name="Grey">
+    <color rgba="0.4 0.4 0.4 1.0"/>
+  </material>
+
+  <material name="Orange">
+    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  </material>
+
+  <!-- iiwa7 -->
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro" />
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" /> 
 
   <!-- ROBOTS -->
-  <!--iiwa-->
+  <!--iiwa7-->
   <xacro:arg name="iiwa_hardware_interface" default="PositionJointInterface"/>
   <xacro:iiwa7 hardware_interface="$(arg iiwa_hardware_interface)"
                robot_name="iiwa"
                parent="table">
-  <origin xyz="0.214 -0.324 0.50" rpy="0 0 1.63"/>
+    <origin xyz="0.8 0.0 0.50" rpy="0 0 1.57"/>
   </xacro:iiwa7>
 
   <!-- camera -->
   <xacro:sensor_d435 parent="realsense_visual" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)" use_mesh="$(arg use_mesh)">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="-0.05 0 .0125" rpy="0 -1.57 0"/>
   </xacro:sensor_d435> 
 
   <link name="realsense_visual">

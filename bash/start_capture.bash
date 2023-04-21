@@ -9,6 +9,6 @@ live: true
 tsdf_params:
   voxel_length: 0.002
   sdf_trunc: 0.007
-  min_box_values: {x: 0.475, y: 0.19, z: 0.515}
-  max_box_values: {x: 0.725, y: 0.36, z: 0.725}
-rgbd_params: {depth_scale: 1000.0, depth_trunc: 0.25, convert_rgb_to_intensity: false}"
+  min_box_values: {x: 0.0, y: 0.0, z: 0.0}
+  max_box_values: {x: 0.0, y: 0.0, z: 0.0}
+rgbd_params: {depth_scale: 1000.0, depth_trunc: 0.5, convert_rgb_to_intensity: false}"
