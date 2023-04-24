@@ -6,7 +6,7 @@ repositories:
   iiwa_pubsub_practice:
     type: git
     url: https://github.com/adalysa/iiwa_pubsub_practice.git
-    version: d113252a8421bdc7a6dfc09e929baf7628474d60
+    version: 4ffd1cf99d9e479761f3505e0c2007c46358d062
   iiwa_stack:
     type: git
     url: https://github.com/IFL-CAMP/iiwa_stack.git
