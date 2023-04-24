@@ -2,15 +2,15 @@ repositories:
   iiwa_pubsub_practice:
     type: git
     url: https://github.com/adalysa/iiwa_pubsub_practice.git
-    version: d113252a8421bdc7a6dfc09e929baf7628474d60
+    version: 4ffd1cf99d9e479761f3505e0c2007c46358d062
   iiwa_stack:
     type: git
     url: https://github.com/IFL-CAMP/iiwa_stack.git
     version: a4f132ad093d276e63040ddbbac6b2cd1facbdcc
   iiwa_stack_examples:
     type: git
-    url: https://github.com/tassos/iiwa_stack_examples.git
-    version: a7bd7a3fa5444079fd1a496e79ae1bc925256921
+    url: https://github.com/Debido07/iiwa_stack_examples.git
+    version: 2b390c0215a2a14ba991e67a16eaaa5be87611e1
   industrial_calibration:
     type: git
     url: https://github.com/ros-industrial/industrial_calibration.git
