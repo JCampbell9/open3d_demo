@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="camera_file" default="$(find open3d_demo)/launch/calibration/camera_intr.yaml"/>
+  <arg name="target_file" default="$(find open3d_demo)/launch/calibration/target.yaml"/>
+  <arg name="guess_file" default="$(find open3d_demo)/launch/calibration/guess.yaml"/>
+  <arg name="data_path" default="calib_data/data.yaml"/>
+  <arg name="homography_threshold" default="1.5" doc="Threshold for average reprojection error for an obseravation (in pixels), above which an observation will be excluded from the calibration"/>
+
+  <node pkg="rct_examples" type="moving_cam_extr_cal_ex" name="camera_on_wrist" output="screen">
+    <rosparam command="load" file="$(arg camera_file)"/>
+    <rosparam command="load" file="$(arg target_file)"/>
+    <rosparam command="load" file="$(arg guess_file)"/>
+    <param name="data_path" value="$(arg data_path)"/>
+    <param name="homography_threshold" value="$(arg homography_threshold)"/>
+  </node>
+</launch>

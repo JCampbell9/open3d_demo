@@ -75,12 +75,20 @@
   </joint> -->
   
   <!-- realsense calibration stuff -->
-  <link name="camera_color_optical_frame_x_trans"/>
+  <link name="camera_color_optical_frame"/>
+
+  <joint name="calib_camera_joint" type="fixed">
+    <parent link="iiwa_link_ee"/>
+    <child link="camera_color_optical_frame"/>
+    <origin rpy="-3.13477 -3.13857 1.57876" xyz="-0.0762939 0.00946182 0.0607092" />
+  </joint>
+
+  <!-- <link name="camera_color_optical_frame_x_trans"/>
   <link name="camera_color_optical_frame_y_trans"/>
   <link name="camera_color_optical_frame_z_trans"/>
   <link name="camera_color_optical_frame_pitch"/>
-  <link name="camera_color_optical_frame_yaw"/>
-  <link name="camera_color_optical_frame"/>
+  <link name="camera_color_optical_frame_yaw"/> -->
+<!-- 
   <joint name="camera_color_optical_frame_x_joint" type="prismatic">
     <parent link="iiwa_link_ee"/>
     <child link="camera_color_optical_frame_x_trans"/>
@@ -122,10 +130,10 @@
     <origin rpy="0.016 -0.008 -1.565" xyz="-0.082 0.0078 0.0175"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="1 0 0"/>
-  </joint>
+  </joint> -->
 
   <!-- target calibration stuff -->
-  <link name="target"/>
+  <!-- <link name="target"/>
   <link name="target_x_trans">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -179,13 +187,13 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <limit effort="2" lower="-6.2832" upper="6.2832" velocity="10"/>
     <axis xyz="1 0 0"/>
-  </joint>
+  </joint> -->
   
   <link name="target_calibrated"/>
   <joint name="target_calibrated_joint" type="fixed">
-    <parent link="world"/>
+    <parent link="iiwa_link_0"/>
     <child link="target_calibrated"/>
-    <origin rpy="-1.5712 0.0098 0.0073" xyz="0.5242 0.2895 0.5130"/>
+    <origin rpy="-3.14145 3.13462 1.56692" xyz="-0.20862 0.595346 0.00766619"/>
   </joint>
 
 </robot>

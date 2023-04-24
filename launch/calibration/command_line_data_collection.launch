@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Path to your target file (so observer can show you if it sees target) -->
+  <arg name="target_file" default="$(find open3d_demo)/launch/calibration/target.yaml"/>
+
+  <!--  TF transform lookup parameters-->
+  <arg name="base_frame" default="iiwa_link_0"/>
+  <arg name="tool_frame" default="iiwa_link_ee"/>
+
+  <!-- Image topic parameters -->
+  <arg name="image_topic" default="camera/color/image_raw"/>
+
+  <!--The save directory-->
+  <arg name="save_dir" default="calib_data"/>
+
+  <node pkg="rct_ros_tools" type="command_line_data_collection" name="rct_examples" output="screen">
+    <rosparam command="load" file="$(arg target_file)"/>
+    <param name="base_frame" value="$(arg base_frame)"/>
+    <param name="tool_frame" value="$(arg tool_frame)"/>
+    <param name="image_topic" value="$(arg image_topic)"/>
+    <param name="save_dir" value="$(arg save_dir)"/>
+  </node>
+</launch>

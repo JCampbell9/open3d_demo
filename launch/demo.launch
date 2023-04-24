@@ -73,6 +73,7 @@
     
     <node name="move_iiwa" pkg="iiwa_tool_examples" type="command_robot">
       <param name="use_cartesian_command" value="false" />
+      <param name="use_raster_pattern" value="false" />
     </node>
 
   </group>
