@@ -1,5 +1,9 @@
 # open3D KUKA Demo
 
+## Notes
+- Pressing ```CTRL+Shift+V``` inside VS Code will open a much more legible preview of this markdown file
+- The Kuka IIWA 7 Teach Pendant Touchscreen has **awful** responsiveness. You've been warned...
+
 ## Setting up the Kuka IIWA 7
 
 1. Ensure all necessary connections are made for the following parts:
