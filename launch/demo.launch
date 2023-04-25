@@ -70,10 +70,17 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
     <node name="iiwa_translate" pkg="iiwa_pubsub" type="iiwa_sub_node"/>
-    
+
     <node name="move_iiwa" pkg="iiwa_tool_examples" type="command_robot">
       <param name="use_cartesian_command" value="false" />
       <param name="use_raster_pattern" value="false" />
+      <param name="square_size" value="0.15" />
+      <param name="ros_rate" value="1" />
+      <param name="init_x_pos" value="0.100" />
+      <param name="init_y_pos" value="0.650" />
+      <param name="init_z_pos" value="0.250" />
+      <param name="debug" value = "true" />
+      <param name="rel_joint_vel" value="0.1" /> <!-- Must be between 0 (no velocity) and 1 (full velocity) -->
     </node>
 
   </group>
