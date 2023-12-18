@@ -2,7 +2,7 @@ repositories:
   iiwa_pubsub_practice:
     type: git
     url: https://github.com/adalysa/iiwa_pubsub_practice.git
-    version: d113252a8421bdc7a6dfc09e929baf7628474d60
+    version: main
   iiwa_stack:
     type: git
     url: https://github.com/IFL-CAMP/iiwa_stack.git
@@ -29,7 +29,7 @@ repositories:
     version: 5e51aeebae214874defd84b6af98f4c6a2434246
   open3d_interface:
     type: git
-    url: git@github.com:marrts/open3d_interface.git
+    url: https://github.com/marrts/open3d_interface.git
     version: b5e5c7279a6f115e2e14d90bfa3485c3dc915411
   realsense-ros:
     type: git
