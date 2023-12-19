@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source /home/open3d_demo/open3d_demo_ws/devel/setup.bash
+source /home/jmcampbell/workspaces/tpr_local/devel/setup.bash
 rosservice call /start_reconstruction "tracking_frame: 'camera_color_optical_frame'
 relative_frame: 'world'
 translation_distance: 0.0
