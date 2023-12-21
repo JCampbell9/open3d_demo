@@ -3,7 +3,7 @@
   <arg name="camera_file" default="$(find open3d_demo)/launch/calibration/camera_intr.yaml"/>
   <arg name="target_file" default="$(find open3d_demo)/launch/calibration/target.yaml"/>
   <arg name="guess_file" default="$(find open3d_demo)/launch/calibration/guess.yaml"/>
-  <arg name="data_path" default="calib_data/data.yaml"/>
+  <arg name="data_path" default="/home/jmcampbell/calib_data/data.yaml"/>
   <arg name="homography_threshold" default="1.5" doc="Threshold for average reprojection error for an obseravation (in pixels), above which an observation will be excluded from the calibration"/>
 
   <node pkg="rct_examples" type="moving_cam_extr_cal_ex" name="camera_on_wrist" output="screen">

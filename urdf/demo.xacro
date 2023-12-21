@@ -80,7 +80,7 @@
   <joint name="calib_camera_joint" type="fixed">
     <parent link="iiwa_link_ee"/>
     <child link="camera_color_optical_frame"/>
-    <origin rpy="-3.13477 -3.13857 1.57876" xyz="-0.0762939 0.00946182 0.0607092" />
+    <origin rpy="-3.13573 -3.13968 1.5879" xyz="-0.0760461 -0.0123072 0.05901180" />
   </joint>
 
   <!-- <link name="camera_color_optical_frame_x_trans"/>
@@ -193,7 +193,7 @@
   <joint name="target_calibrated_joint" type="fixed">
     <parent link="iiwa_link_0"/>
     <child link="target_calibrated"/>
-    <origin rpy="-3.14145 3.13462 1.56692" xyz="-0.20862 0.595346 0.00766619"/>
+    <origin rpy="0.122741 0.01472 3.10858" xyz="0.0425594 -0.569619 -0.159719"/>
   </joint>
 
 </robot>

@@ -6,6 +6,8 @@
   <arg name="sim_robot" default="true"/>
   <arg name="rviz" default="true"/>
   <arg name="robot_ip" default="172.31.1.147"/>
+  <arg name="move_robot" default="true"/>
+  <!-- <arg name="move_robot" default="false"/> -->
     
   <param name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find open3d_demo)/urdf/demo.xacro'" />
   
@@ -59,7 +61,7 @@
       <param name="realsense/color/max_threshold" value="200"/>
     </node>
     
-    <node name="combined_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <node name="combined_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
       <remap from="/robot_joint_states" to="/iiwa/joint_states" />
       <rosparam param="source_list">[robot_joint_states, mutable_joint_states]</rosparam>
       <param name="publish_default_velocities" value="true" />
@@ -71,18 +73,19 @@
 
     <node name="iiwa_translate" pkg="iiwa_pubsub" type="iiwa_sub_node"/>
 
-    <node name="move_iiwa" pkg="iiwa_tool_examples" type="command_robot">
-      <param name="use_cartesian_command" value="false" />
-      <param name="use_raster_pattern" value="false" />
-      <param name="square_size" value="0.15" />
-      <param name="ros_rate" value="1" />
-      <param name="init_x_pos" value="0.100" />
-      <param name="init_y_pos" value="0.650" />
-      <param name="init_z_pos" value="0.250" />
-      <param name="debug" value = "true" />
-      <param name="rel_joint_vel" value="0.1" /> <!-- Must be between 0 (no velocity) and 1 (full velocity) -->
-    </node>
-
+    <group if="$(arg move_robot)"> 
+      <node name="move_iiwa" pkg="iiwa_tool_examples" type="command_robot">
+        <param name="use_cartesian_command" value="false" />
+        <param name="use_raster_pattern" value="false" />
+        <param name="square_size" value="0.15" />
+        <param name="ros_rate" value="1" />
+        <param name="init_x_pos" value="0.100" />
+        <param name="init_y_pos" value="0.650" />
+        <param name="init_z_pos" value="0.250" />
+        <param name="debug" value = "true" />
+        <param name="rel_joint_vel" value="0.1" /> <!-- Needs to be between 0 and 1--> 
+      </node>
+    </group>
   </group>
   
 </launch>

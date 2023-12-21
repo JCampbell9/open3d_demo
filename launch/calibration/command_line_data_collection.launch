@@ -11,7 +11,7 @@
   <arg name="image_topic" default="camera/color/image_raw"/>
 
   <!--The save directory-->
-  <arg name="save_dir" default="calib_data"/>
+  <arg name="save_dir" default="/home/jmcampbell/calib_data"/>
 
   <node pkg="rct_ros_tools" type="command_line_data_collection" name="rct_examples" output="screen">
     <rosparam command="load" file="$(arg target_file)"/>

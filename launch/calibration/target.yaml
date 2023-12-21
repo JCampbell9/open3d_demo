@@ -2,6 +2,6 @@ target_finder:
   type: rct_ros_tools::CharucoGridTargetFinderPlugin
   rows: 7
   cols: 5
-  chessboard_dim: 0.036195
-  aruco_marker_dim: 0.018256
-  dictionary: 10  # DICT_6X6_250
+  chessboard_dim: 0.035
+  aruco_marker_dim: 0.027
+  dictionary: 2 # DICT_4X4_250
